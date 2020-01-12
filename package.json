@@ -1,0 +1,31 @@
+{
+  "name": "captcha",
+  "version": "1.0.0",
+  "main": "recaptcha.js",
+  "bin": "recaptcha.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node recaptcha.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "excel4node": "^1.7.2",
+    "figlet": "^1.2.4",
+    "promise-poller": "^1.9.1",
+    "puppeteer": "^2.0.0",
+    "puppeteer-extra": "^3.1.7",
+    "puppeteer-extra-plugin-recaptcha": "^3.1.8",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.8",
+    "xlsx": "^0.15.4"
+  },
+  "pkg": {
+    "assets": [
+      "./node_modules/figlet/fonts/Standard.flf",
+      "./tmp/*",
+      "./data/*"
+    ]
+  }
+}
