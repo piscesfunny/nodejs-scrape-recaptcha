@@ -15,29 +15,6 @@ const getDataFromExcel = (sourceExcelPath) => {
     return columnC.slice(1)
 }
 
-const getTempDataFromExcel = (sourceExcelPath) => {
-    const workbook = xlsx.readFile(sourceExcelPath);
-    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-
-    const columnA = [];
-    const columnB = [];
-
-    for (let z in worksheet) {
-        if(z.toString()[0] === 'A'){
-            columnA.push(worksheet[z].v);
-        }
-
-        if(z.toString()[0] === 'B'){
-            columnB.push(worksheet[z].v);
-        }
-    }
-
-    const tempInsuredNumbers = columnA.slice(1)
-    const tempUninsuredNumbers = columnB.slice(1)
-
-    return { tempInsuredNumbers, tempUninsuredNumbers }
-}
-
 const writeUniqueNumbersToExcel = (uniqueNumbers, resultExcelPath) => {
     const workbook = new excel.Workbook();
 
@@ -106,7 +83,6 @@ const getUniqueArray = (array) => {
 
 module.exports = {
     getDataFromExcel,
-    getTempDataFromExcel,
     writeUniqueNumbersToExcel,
     writeResultToExcel,
     getUniqueArray
