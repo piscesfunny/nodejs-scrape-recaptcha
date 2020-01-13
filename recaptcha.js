@@ -1,3 +1,4 @@
+require('dotenv').config();
 const puppeteer = require('puppeteer');
 const request = require('request-promise-native')
 const poll = require('promise-poller').default
@@ -6,9 +7,9 @@ const path = require('path');
 const { getDataFromExcel, writeUniqueNumbersToExcel, writeResultToExcel, getUniqueArray } = require('./excel')
 
 const config = {
-    sitekey: '6LdpYRoTAAAAAAL0_J6lZ7LIKHD7bX6T2_Rgd-UB',
-    pageurl: 'https://ownvehicle.askmid.com',
-    apiKey: 'f38cbfee4096340a79eb5ea447dece11',
+    sitekey: process.env.SITE_KEY,
+    pageurl: process.env.PAGE_URL,
+    apiKey: process.env.API_KEY,
 }
 
 const chromeOptions = {
@@ -144,8 +145,8 @@ async function doScraping(startIndex, countPerParallelExecution, registrationNum
 
 async function main() {
     const registrationNumbers = getRegistrationNumbers()
-    // const totalCount = registrationNumbers.length
-    const totalCount = 10
+    const totalCount = registrationNumbers.length
+    // const totalCount = 10
     const parallelExecutionCount = 5
 
     const countPerParallelExecution = Math.ceil(totalCount / parallelExecutionCount)
